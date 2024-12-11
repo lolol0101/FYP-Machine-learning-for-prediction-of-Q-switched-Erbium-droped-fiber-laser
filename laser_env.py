@@ -11,13 +11,13 @@ class LaserEnv(gym.Env):
 
         # Observation space: pulse_width (1-100) and repetition_rate (100-1000)
         self.observation_space = spaces.Box(
-            low=np.array([1, 100], dtype=np.float32),  # Minimum bounds
-            high=np.array([100, 1000], dtype=np.float32),  # Maximum bounds
+            low=np.array([5, 50], dtype=np.float32),  # Minimum bounds
+            high=np.array([10, 100], dtype=np.float32),  # Maximum bounds
             dtype=np.float32  # Data type for precision
         )
 
         # Initial state (pulse width, repetition rate)
-        self.state = np.array([50.0, 500.0], dtype=np.float32)
+        self.state = np.array([7.5, 7.5], dtype=np.float32)
 
         # Target energy for reward calculation
         self.target_energy = 100
@@ -59,3 +59,4 @@ class LaserEnv(gym.Env):
     def _calculate_energy(self, pulse_width, repetition_rate):
         # Placeholder for energy calculation (adjust based on real dynamics)
         return pulse_width * np.log(repetition_rate)
+
